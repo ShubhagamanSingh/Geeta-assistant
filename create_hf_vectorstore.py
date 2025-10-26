@@ -1,6 +1,5 @@
 import os
 import pickle
-from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 
 print("Starting vector store creation process using Hugging Face API...")
@@ -11,7 +10,7 @@ load_dotenv()
 # Check for Hugging Face API Token
 hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 if not hf_token:
-    raise ValueError("Hugging Face API Token not found. Please set HUGGINGFACEHUB_API_TOKEN in the .env file.")
+    print("Warning: Hugging Face API Token not found. This script only creates chunks, but the app will need the token.")
 
 def simple_text_splitter(text, chunk_size=1000, chunk_overlap=100):
     """A basic function to split text into overlapping chunks."""
